@@ -1,0 +1,39 @@
+﻿# Ignore database files
+*.db
+*.sqlite
+
+# Ignore sensitive configuration files
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore compiled output files
+*.dll
+*.exe
+*.pdb
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.userprefs
+
+# Ignore Rider-specific project files
+rider.project.model.nuget.info
+rider.project.restore.info
+
+# Ignore build/cache files
+*.cache
+*.txt
+
+# Ignore assembly info inputs and core compile input files
+*.AssemblyInfoInputs.cache
+*.csproj.CoreCompileInputs.cache
+*.csproj.FileListAbsolute.txt
