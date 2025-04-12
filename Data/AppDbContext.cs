@@ -12,4 +12,5 @@ public class AppDbContext : IdentityDbContext<AppUser>
     }
 
     public DbSet<AppUser> Users => Set<AppUser>();
+    public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
 }

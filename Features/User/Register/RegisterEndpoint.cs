@@ -1,14 +1,15 @@
-﻿using Ripple.Entities;
+﻿using Microsoft.AspNetCore.Identity;
+using Ripple.Entities;
 
 namespace Ripple.Features.User.Register;
 
 public class RegisterEndpoint : Endpoint<RegisterRequest, RegisterResponse>
 {
-    private readonly RegisterData _registerData;
+    private readonly UserManager<AppUser> _userManager;
 
-    public RegisterEndpoint(RegisterData registerData)
+    public RegisterEndpoint(UserManager<AppUser> userManager)
     {
-        _registerData = registerData;
+        _userManager = userManager;
     }
 
     public override void Configure()
@@ -19,12 +20,14 @@ public class RegisterEndpoint : Endpoint<RegisterRequest, RegisterResponse>
 
     public override async Task HandleAsync(RegisterRequest req, CancellationToken ct)
     {
-        if (await _registerData.EmailExists(req.Email))
+        var existingUserByEmail = await _userManager.FindByEmailAsync(req.Email);
+        if (existingUserByEmail is not null)
         {
             AddError("Email is already in use.");
         }
 
-        if (await _registerData.UserNameExists(req.UserName))
+        var existingUserByName = await _userManager.FindByNameAsync(req.UserName);
+        if (existingUserByName is not null)
         {
             AddError("Username is already taken.");
         }
@@ -37,7 +40,7 @@ public class RegisterEndpoint : Endpoint<RegisterRequest, RegisterResponse>
             UserName = req.UserName,
         };
 
-        var result = await _registerData.CreateUser(user, req.Password);
+        var result = await _userManager.CreateAsync(user, req.Password);
 
         if (!result.Succeeded)
         {

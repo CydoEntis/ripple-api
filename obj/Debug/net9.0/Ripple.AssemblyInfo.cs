@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ripple")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+145ed0e3f61e287a38b50afa77fae1cb6be49f42")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79b1f929023f23d2264095e613e940409d3b36dd")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ripple")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ripple")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

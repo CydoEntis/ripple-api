@@ -183,3 +183,4 @@ C:\Users\cydoe\Programming\portfolio-projects\ripple\ripple-api\Ripple\bin\Debug
 C:\Users\cydoe\Programming\portfolio-projects\ripple\ripple-api\Ripple\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\cydoe\Programming\portfolio-projects\ripple\ripple-api\Ripple\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\cydoe\Programming\portfolio-projects\ripple\ripple-api\Ripple\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\cydoe\Programming\portfolio-projects\ripple\ripple-api\Ripple\obj\Debug\net9.0\Ripple.sourcelink.json

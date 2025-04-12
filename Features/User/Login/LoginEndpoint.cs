@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Ripple.Entities;
 using FastEndpoints.Security;
+using Ripple.Features.User.RefreshToken;
 
 namespace Ripple.Features.User.Login;
 
-public class LoginEndpoint : Endpoint<LoginRequest, LoginResponse>
+public class LoginEndpoint : Endpoint<LoginRequest, TokenResponse>
 {
     private readonly UserManager<AppUser> _userManager;
     private readonly SignInManager<AppUser> _signInManager;
@@ -40,19 +41,22 @@ public class LoginEndpoint : Endpoint<LoginRequest, LoginResponse>
             ThrowError(r => r.Email, "Invalid credentials");
         }
 
-        var jwtToken = JwtBearer.CreateToken(
-            o =>
-            {
-                o.SigningKey = _secret;
-                o.ExpireAt = DateTime.UtcNow.AddMinutes(30);
-                o.User.Claims.Add(("UserName", user.UserName));
-                o.User["UserId"] = user.Id;
-            });
 
-        var response = new LoginResponse
-        {
-            Token = jwtToken
-        };
+        var response = await CreateTokenWith<TokenService>(user.Id, u => { u.Claims.Add(new("UserId", user.Id)); });
+
+        // var jwtToken = JwtBearer.CreateToken(
+        //     o =>
+        //     {
+        //         o.SigningKey = _secret;
+        //         o.ExpireAt = DateTime.UtcNow.AddMinutes(30);
+        //         o.User.Claims.Add(("UserName", user.UserName));
+        //         o.User["UserId"] = user.Id;
+        //     });
+
+        // var response = new LoginResponse
+        // {
+        //     Token = jwtToken
+        // };
 
         await SendAsync(response);
     }
