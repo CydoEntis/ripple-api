@@ -37,3 +37,10 @@ rider.project.restore.info
 *.AssemblyInfoInputs.cache
 *.csproj.CoreCompileInputs.cache
 *.csproj.FileListAbsolute.txt
+
+# Ignore migration files
+Migrations/
+
+# Ignore SQLite WAL and SHM files
+*.db-shm
+*.db-wal
