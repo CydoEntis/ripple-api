@@ -44,3 +44,9 @@ Migrations/
 # Ignore SQLite WAL and SHM files
 *.db-shm
 *.db-wal
+
+# Ignore Visual Studio settings
+.vs/
+
+# Ignore JetBrains user-specific settings
+*.DotSettings.user
